@@ -1,5 +1,5 @@
 const BaseController = require('../base/baseController')
-const CustomerService = require('../../services/entries/customerService')
+const CustomerService = require('../../services/register/customerService')
 
 class CustomerController extends BaseController {
     constructor() {

@@ -1,5 +1,5 @@
 var BaseService = require('../base/baseService')
-var CustomerRepository = require('../../repositories/entries/customerRepository')
+var CustomerRepository = require('../../repositories/register/customerRepository')
 
 class CustomerService extends BaseService {
     constructor() {
