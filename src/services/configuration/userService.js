@@ -1,5 +1,8 @@
-var BaseService = require('../base/baseService')
-var UserRepository = require('../../repositories/configuration/userRepository')
+const BaseService = require('../base/baseService')
+const UserRepository = require('../../repositories/configuration/userRepository')
+const ApplicationError = require('../../errors/applicationError')
+const jwt = require('jsonwebtoken')
+const passwordUtil = require('../../utils/passwordUtil')
 
 class UserService extends BaseService {
     constructor() {

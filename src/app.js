@@ -11,27 +11,27 @@ appConfiguration.loadConfiguration()
 
 logMessenger.createLogInfo("Configurando o servidor")
 const app = express()
-const port = process.env.PORT
+const port = process.env.port
 
-app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.json())
 
-logMessenger.createLogInfo("Carregando rotas")
 // Load routes
+logMessenger.createLogInfo("Carregando rotas")
 app.use('/api', router)
 
-logMessenger.createLogInfo("Carregando configurações do Swagger")
 // Load Swagger Definitions
+logMessenger.createLogInfo("Carregando configurações do Swagger")
 app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
-
-// Redirect to Swagger
-app.use('/', function(req, res, next) {
-    return res.redirect('/api/swagger')
+app.get('/api/swagger.json', (req, res) => {
+    res.setHeader("Content-Type", "application/json")
+    res.send(swaggerDoc)
 })
 
+// Middlewares
 logMessenger.createLogInfo("Carregando middlewares")
-app.use(middlewares.errorHandler)
 app.use(middlewares.notFound)
+app.use(middlewares.errorHandler)
 
 const server = app.listen(port, () => {
     logMessenger.createLogSuccess(`Aplicação iniciou na porta ${port}`)

@@ -1,6 +1,7 @@
 const express = require('express')
 const userRouter = express.Router()
 var UserController = require('../../controllers/configuration/userController')
+const middlewares = require('../../middlewares')
 const userController = new UserController()
 
 /**
@@ -28,7 +29,7 @@ userRouter.get("/getAll", function(req, res, next) {
  *     description: Obtém usuário pesquisando por id.
  *     tags: [Users]
  *     parameters:
- *       - in: query
+ *       - in: path
  *         name: id
  *         required: true
  *         description: Id do usuário
@@ -41,7 +42,7 @@ userRouter.get("/getAll", function(req, res, next) {
  *       400:
  *         description: Bad Request.
  */
-userRouter.get("/get/:id", function(req, res, next) {
+userRouter.get("/get/:id", middlewares.verifyJWT, function(req, res, next) {
     return userController.get(req, res, next)
 })
 
@@ -92,7 +93,7 @@ userRouter.get("/get/:id", function(req, res, next) {
  *       400:
  *         description: Bad Request.
  */
-userRouter.post("/create", function(req, res, next) {
+userRouter.post("/create", middlewares.verifyJWT, function(req, res, next) {
     return userController.create(req, res, next)
 })
 
@@ -143,7 +144,7 @@ userRouter.post("/create", function(req, res, next) {
  *       400:
  *         description: Bad Request.
  */
-userRouter.put("/update", function(req, res, next) {
+userRouter.put("/update", middlewares.verifyJWT, function(req, res, next) {
     return userController.update(req, res, next)
 })
 
@@ -168,7 +169,7 @@ userRouter.put("/update", function(req, res, next) {
  *       400:
  *         description: Bad Request.
  */
-userRouter.delete("/delete/:id", function(req, res, next) {
+userRouter.delete("/delete/:id", middlewares.verifyJWT, function(req, res, next) {
     return userController.delete(req, res, next)
 })
 

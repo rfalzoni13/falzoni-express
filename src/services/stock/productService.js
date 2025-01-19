@@ -1,5 +1,5 @@
-var BaseService = require('../base/baseService')
-var ProductRepository = require('../../repositories/stock/productRepository')
+const BaseService = require('../base/baseService')
+const ProductRepository = require('../../repositories/stock/productRepository')
 
 class ProductService extends BaseService {
     constructor() {
