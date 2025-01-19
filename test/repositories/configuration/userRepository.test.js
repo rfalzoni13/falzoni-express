@@ -40,14 +40,24 @@ describe("test for user repository", () => {
         await assert.equal(user, null)
     })
 
+    it('should be user return success when get by email or userName', async () => {
+        const user = await repository.getByEmailOrUsername("jameshetfield@hotmail.com")
+        await assert.notEqual(user, null)
+    })
+
+    it('should be user return empty when get by wrong email or userName', async () => {
+        const user = await repository.getByEmailOrUsername("ralfeteimoso3")
+        await assert.equal(user, null)
+    })
+
     it('should be return success when create user', async () => {
         const user = { 
             id: randomUUID(),
-            fullName: "Seiya de Pégaso",
-            userName: "pegasoSeiya",
+            full_name: "Seiya de Pégaso",
+            user_name: "pegasoSeiya",
             password: "123456",
             email: "seiyadepegaso@hotmail.com",
-            phoneNumber: "(11) 2222-2222",
+            phone_number: "(11) 2222-2222",
             role: "ADMIN"
         }
         await repository.create(user)
@@ -56,11 +66,11 @@ describe("test for user repository", () => {
     it('should be return failure when create user', async () => {
         const user = {
             id: randomUUID(),
-            fullName: null,
-            userName: null,
+            full_name: null,
+            user_name: null,
             password: "123456",
             email: "seiyadepegaso@hotmail.com",
-            phoneNumber: "(11) 2222-2222",
+            phone_number: "(11) 2222-2222",
             role: "ADMIN"
         }
         await expect(repository.create(user)).to.be.rejectedWith(SqliteError)
@@ -68,8 +78,8 @@ describe("test for user repository", () => {
 
     it('should be return success when update user', async () => {
         const user = await repository.get("15dbc8f7-26d1-43a6-bd36-5cc2ab40e9b5")
-        user.fullName = "Cargueiro atômico"
-        user.phoneNumber = "(11) 92212-2121"
+        user.full_name = "Cargueiro atômico"
+        user.phone_number = "(11) 92212-2121"
         await repository.update(user)
     })
 

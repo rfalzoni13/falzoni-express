@@ -6,7 +6,7 @@ class UserRepository extends BaseRepository {
         this.tableName = 'user'
     }
 
-    async getByUserName(userName) {
+    async getByEmailOrUsername(userName) {
         const obj = await this.db.select().table(this.tableName)
             .where('user_name', userName)
             .orWhere('email', userName).limit(1)

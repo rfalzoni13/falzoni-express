@@ -1,9 +1,15 @@
+const UserRepository = require('../../repositories/configuration/userRepository')
+
 class AccountService {
+    constructor() {
+        this.repository = new UserRepository()
+    }
+
     async login(obj) {
         try {
             validateLogin(obj)
 
-            const user = await this.repository.getByUserName(obj.userName)
+            const user = await this.repository.getByEmailOrUsername(obj.userName)
             if(user == null) throw new Error("Usuário não encontrado")
 
             if(!passwordUtil.verifyPassword(obj.password, user.password))
