@@ -22,8 +22,8 @@ app.use('/api', router)
 
 // Load Swagger Definitions
 logMessenger.createLogInfo("Carregando configurações do Swagger")
-app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
-app.get('/api/swagger.json', (req, res) => {
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
+app.get('/swagger.json', (req, res) => {
     res.setHeader("Content-Type", "application/json")
     res.send(swaggerDoc)
 })
