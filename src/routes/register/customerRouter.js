@@ -41,7 +41,6 @@ customerRouter.get("/getAll", function(req, res, next) {
  *         description: Id do cliente
  *         schema:
  *           type: string
- *         
  *     responses:
  *       200:
  *         description: Success.
@@ -70,37 +69,7 @@ customerRouter.get("/get/:id", function(req, res, next) {
  *         name: user
  *         description: Objeto do cliente
  *         schema:
- *            type: object
- *            required:
- *              - name
- *              - dateBirth
- *              - gender
- *              - email
- *              - phoneNumber
- *              - cellPhoneNumber
- *              - document
- *            properties:
- *              name:
- *                type: string
- *                example: Renato
- *              dateBirth:
- *                type: string
- *                example: 1990-03-13
- *              gender:
- *                type: string
- *                example: Masculino
- *              email:
- *                type: string
- *                example: renato.lopes.falzoni@email.com
- *              phoneNumber:
- *                type: string
- *                example: (11) 3541-2343
- *              cellPhoneNumber:
- *                type: string
- *                example: (11) 95329-4415
- *              document:
- *                type: string
- *                example: 453.849.654-22
+ *           $ref: '#/components/schemas/customerSchema'
  *     responses:
  *       201:
  *         description: Created.
@@ -125,37 +94,7 @@ customerRouter.post("/create", function(req, res, next) {
  *         name: user
  *         description: Objeto do cliente
  *         schema:
- *            type: object
- *            required:
- *              - name
- *              - dateBirth
- *              - gender
- *              - email
- *              - phoneNumber
- *              - cellPhoneNumber
- *              - document
- *            properties:
- *              name:
- *                type: string
- *                example: Renato
- *              dateBirth:
- *                type: string
- *                example: 1990-03-13
- *              gender:
- *                type: string
- *                example: Masculino
- *              email:
- *                type: string
- *                example: renato.lopes.falzoni@email.com
- *              phoneNumber:
- *                type: string
- *                example: (11) 3541-2343
- *              cellPhoneNumber:
- *                type: string
- *                example: (11) 95329-4415
- *              document:
- *                type: string
- *                example: 453.849.654-22
+ *            $ref: '#/components/schemas/customerSchema'
  *     responses:
  *       201:
  *         description: Created.
@@ -180,7 +119,6 @@ customerRouter.put("/update", function(req, res, next) {
  *         description: Id do cliente
  *         schema:
  *           type: string
- *         
  *     responses:
  *       200:
  *         description: Success.

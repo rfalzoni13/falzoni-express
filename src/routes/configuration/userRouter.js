@@ -120,7 +120,6 @@ userRouter.put("/update", middlewares.verifyJWT, function(req, res, next) {
  *         description: Id do usuário
  *         schema:
  *           type: string
- *         
  *     responses:
  *       200:
  *         description: Success.

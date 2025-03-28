@@ -14,6 +14,12 @@ const productController = new ProductController()
  *     responses:
  *       200:
  *         description: Success.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/productSchema'
  *       400:
  *         description: Bad Request.
  */
@@ -35,10 +41,13 @@ productRouter.get("/getAll", function(req, res, next) {
  *         description: Id do produto
  *         schema:
  *           type: string
- *         
  *     responses:
  *       200:
  *         description: Success.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/productSchema'
  *       400:
  *         description: Bad Request.
  */
@@ -60,29 +69,7 @@ productRouter.get("/get/:id", function(req, res, next) {
  *         name: user
  *         description: Objeto do produto
  *         schema:
- *            type: object
- *            required:
- *              - productCategoryId
- *              - name
- *              - code
- *              - description
- *              - price
- *            properties:
- *              productCategoryId:
- *                type: string
- *                format: uuid
- *              name:
- *                type: string
- *                example: Carrinho
- *              code:
- *                type: number
- *                example: 123
- *              description:
- *                type: string
- *                example: Descrição de exemplo do produto
- *              price:
- *                type: number
- *                example: 45.99
+ *            $ref: '#/components/schemas/productSchema'
  *     responses:
  *       201:
  *         description: Created.
@@ -107,29 +94,7 @@ productRouter.post("/create", function(req, res, next) {
  *         name: user
  *         description: Objeto do produto
  *         schema:
- *            type: object
- *            required:
- *              - productCategoryId
- *              - name
- *              - code
- *              - description
- *              - price
- *            properties:
- *              productCategoryId:
- *                type: string
- *                format: uuid
- *              name:
- *                type: string
- *                example: Carrinho
- *              code:
- *                type: number
- *                example: 123
- *              description:
- *                type: string
- *                example: Descrição de exemplo do produto
- *              price:
- *                type: number
- *                example: 45.99
+ *            $ref: '#/components/schemas/productSchema'
  *     responses:
  *       201:
  *         description: Created.
@@ -154,7 +119,6 @@ productRouter.put("/update", function(req, res, next) {
  *         description: Id do produto
  *         schema:
  *           type: string
- *         
  *     responses:
  *       200:
  *         description: Success.
