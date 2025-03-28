@@ -14,6 +14,12 @@ const userController = new UserController()
  *     responses:
  *       200:
  *         description: Success.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/userSchema'
  *       400:
  *         description: Bad Request.
  */
@@ -39,6 +45,10 @@ userRouter.get("/getAll", function(req, res, next) {
  *     responses:
  *       200:
  *         description: Success.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/userSchema'
  *       400:
  *         description: Bad Request.
  */
@@ -60,33 +70,7 @@ userRouter.get("/get/:id", middlewares.verifyJWT, function(req, res, next) {
  *         name: user
  *         description: Objeto do usuário
  *         schema:
- *            type: object
- *            required:
- *              - name
- *              - lastName
- *              - gender
- *              - dateBirth
- *              - email
- *              - password
- *            properties:
- *              name:
- *                type: string
- *                example: Renato
- *              lastName:
- *                type: string
- *                example: Falzoni
- *              gender:
- *                type: string
- *                example: Masculino
- *              dateBirth:
- *                type: string
- *                example: 1990-03-13
- *              email:
- *                type: string
- *                example: renato.lopes.falzoni@email.com
- *              password:
- *                type: string
- *                example: Senha123
+ *           $ref: '#/components/schemas/userSchema'
  *     responses:
  *       201:
  *         description: Created.
@@ -111,33 +95,7 @@ userRouter.post("/create", middlewares.verifyJWT, function(req, res, next) {
  *         name: user
  *         description: Objeto do usuário
  *         schema:
- *            type: object
- *            required:
- *              - name
- *              - lastName
- *              - gender
- *              - dateBirth
- *              - email
- *              - password
- *            properties:
- *              name:
- *                type: string
- *                example: Renato
- *              lastName:
- *                type: string
- *                example: Falzoni
- *              gender:
- *                type: string
- *                example: Masculino
- *              dateBirth:
- *                type: string
- *                example: 1990-03-13
- *              email:
- *                type: string
- *                example: renato.lopes.falzoni@email.com
- *              password:
- *                type: string
- *                example: Senha123
+ *           $ref: '#/components/schemas/userSchema'
  *     responses:
  *       200:
  *         description: Success.

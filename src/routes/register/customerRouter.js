@@ -14,6 +14,12 @@ const customerController = new CustomerController()
  *     responses:
  *       200:
  *         description: Success.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/customerSchema'
  *       400:
  *         description: Bad Request.
  */
@@ -39,6 +45,10 @@ customerRouter.get("/getAll", function(req, res, next) {
  *     responses:
  *       200:
  *         description: Success.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/customerSchema'
  *       400:
  *         description: Bad Request.
  */

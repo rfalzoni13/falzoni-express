@@ -45,7 +45,8 @@ describe("test for product repository", () => {
             id: randomUUID(),
             name: "Camiseta Polo Xadrez", 
             price: 19.99,
-            discount: 0.00
+            discount: 0.00,
+            created: Date.now()
         }
         await repository.create(product)
     })
@@ -55,7 +56,8 @@ describe("test for product repository", () => {
             id: randomUUID(),
             name: null, 
             price: null,
-            discount: null
+            discount: null,
+            created: null
         }
         await expect(repository.create(product)).to.be.rejectedWith(SqliteError)
     })
@@ -65,6 +67,7 @@ describe("test for product repository", () => {
         product.name = "Caderno Barbie"
         product.price = 49.99
         product.discount = 5.00
+        product.modified = Date.now()
         await repository.update(product)
     })
 

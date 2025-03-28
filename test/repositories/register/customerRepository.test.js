@@ -44,7 +44,8 @@ describe("test for customer repository", () => {
         const customer = {
             id: randomUUID(),
             name: "Ikki de Fênix",
-            document: "654-789-445-01"
+            document: "654-789-445-01",
+            created: Date.now()
         }
         await repository.create(customer)
     })
@@ -53,7 +54,8 @@ describe("test for customer repository", () => {
         const customer = {
             id: randomUUID(),
             name: null, 
-            document: null
+            document: null, 
+            created: null
         }
         await expect(repository.create(customer)).to.be.rejectedWith(SqliteError)
     })
@@ -62,6 +64,7 @@ describe("test for customer repository", () => {
         const customer = await repository.get("610b1b76-a278-4f88-8d6d-4c33c831b2da")
         customer.name = "Barata tonta"
         customer.document = "655.498.772-47"
+        customer.modified = Date.now()
         await repository.update(customer)
     })
 
