@@ -46,7 +46,7 @@ describe("test for product repository", () => {
             name: "Camiseta Polo Xadrez", 
             price: 19.99,
             discount: 0.00,
-            created: Date.now()
+            created: new Date()
         }
         await repository.create(product)
     })
@@ -67,7 +67,7 @@ describe("test for product repository", () => {
         product.name = "Caderno Barbie"
         product.price = 49.99
         product.discount = 5.00
-        product.modified = Date.now()
+        product.modified = new Date()
         await repository.update(product)
     })
 

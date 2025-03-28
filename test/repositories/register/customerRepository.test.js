@@ -45,7 +45,7 @@ describe("test for customer repository", () => {
             id: randomUUID(),
             name: "Ikki de Fênix",
             document: "654-789-445-01",
-            created: Date.now()
+            created: new Date()
         }
         await repository.create(customer)
     })
@@ -64,7 +64,7 @@ describe("test for customer repository", () => {
         const customer = await repository.get("610b1b76-a278-4f88-8d6d-4c33c831b2da")
         customer.name = "Barata tonta"
         customer.document = "655.498.772-47"
-        customer.modified = Date.now()
+        customer.modified = new Date()
         await repository.update(customer)
     })
 
