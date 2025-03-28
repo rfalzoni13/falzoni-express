@@ -25,7 +25,7 @@ logMessenger.createLogInfo("Carregando configurações do Swagger")
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 app.get('/swagger.json', (req, res) => {
     res.setHeader("Content-Type", "application/json")
-    res.send(swaggerDoc)
+    res.json(swaggerDoc)
 })
 
 // Middlewares
